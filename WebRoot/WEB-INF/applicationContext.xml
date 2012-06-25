@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver">
+		</property>
+		<property name="url" value="jdbc:derby://localhost:1527/myeclipse">
+		</property>
+		<property name="username" value="app"></property>
+		<property name="password" value="app"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.DerbyDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>beans/Visitor.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="VisitorDAO" class="dao.impl.VisitorDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="VisitorServices" class="services.impl.VisitorServiceImpl">
+		<property name="vd" ref="VisitorDAO"></property>
+	</bean>
+	<bean id="springLoginAction" class="actions.LoginAction">
+		<property name="vs" ref="VisitorServices"></property>
+	</bean>
+	<bean id="springRegisterAction" class="actions.RegisterAction">
+		<property name="vs" ref="VisitorServices"></property>
+	</bean>
+
+</beans>
