@@ -2,10 +2,11 @@ package actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class PublishAction extends ActionSupport{
+public class ArgueAction extends ActionSupport {
+
 	private static final long serialVersionUID = 1L;
 
-	public String execute(){
+	public String execute() {
 		return SUCCESS;
 	}
 }
