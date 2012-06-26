@@ -2,8 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
-
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver">
 		</property>
@@ -30,7 +28,6 @@
 			</list>
 		</property>
 	</bean>
-
 	<bean id="VisitorDAO" class="dao.impl.VisitorDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -43,5 +40,4 @@
 	<bean id="springRegisterAction" class="actions.RegisterAction">
 		<property name="vs" ref="VisitorServices"></property>
 	</bean>
-
 </beans>
