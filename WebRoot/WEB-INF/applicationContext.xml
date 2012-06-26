@@ -11,7 +11,7 @@
         </property>
         <property name="url" value="jdbc:mysql://localhost:3306/mysql"></property>
         <property name="username" value="root"></property>
-        <property name="password" value="262728"></property>
+        <property name="password" value="root"></property>
     </bean>
     <bean id="sessionFactory"
         class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
