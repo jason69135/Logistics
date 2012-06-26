@@ -2,6 +2,8 @@ package actions;
 
 import services.VisitorServices;
 import beans.Visitor;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
@@ -25,6 +27,7 @@ public class LoginAction extends ActionSupport {
 	public String execute() {
 		boolean flag = this.vs.login(this.visitor);
 		if (flag) {
+			ActionContext.getContext().getSession().put("username",this.visitor.getUsername());
 			return SUCCESS;
 		} else
 			return INPUT;
