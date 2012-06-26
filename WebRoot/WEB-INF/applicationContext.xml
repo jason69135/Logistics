@@ -41,10 +41,11 @@
 		<property name="vd" ref="VisitorDAO"></property>
 	</bean>
 	<bean id="springLoginAction" class="actions.LoginAction">
-		<property name="vs" ref="VisitorServices"></property>
+	
 	</bean>
 	<bean id="springRegisterAction" class="actions.RegisterAction">
 		<property name="vs" ref="VisitorServices"></property>
 	</bean>
-
+	<bean id="springManageOrderAction" class="actions.ManageOrderAction">
+	</bean>
 </beans>

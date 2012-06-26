@@ -3,11 +3,13 @@
 <struts>
 	<package name="logistics" extends="struts-default">
 		<action name="LoginAction" class="springLoginAction">
-			<result name="success">success.jsp</result>
-			<result name="input">index.jsp</result>
+			<result name="success">index.jsp</result>
 		</action>
 		<action name="RegisterAction" class="springRegisterAction">
 			<result name="success">success.jsp</result>
+		</action>
+		<action name="ManageOrderAction" class="springManageOrderAction">
+			<result name="success">JSP/myOrder.jsp</result>
 		</action>
 	</package>
 </struts>    

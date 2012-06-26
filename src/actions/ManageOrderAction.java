@@ -2,7 +2,8 @@ package actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class OrderBillAction extends ActionSupport {
+public class ManageOrderAction extends ActionSupport {
+
 	private static final long serialVersionUID = 1L;
 
 	public String execute() {
