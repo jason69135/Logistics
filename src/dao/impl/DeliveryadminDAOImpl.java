@@ -1,22 +1,20 @@
 package dao.impl;
 
 import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import dao.DeliveryadminDAO;
+import beans.Deliveryadmin;
 
-import dao.CustomerDAO;
+public class DeliveryadminDAOImpl extends HibernateDaoSupport implements
+		DeliveryadminDAO {
+	private static final Log log = LogFactory.getLog(DeliveryadminDAO.class);
 
-import beans.Customer;
-
-public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO {
-
-	private static final Log log = LogFactory.getLog(CustomerDAO.class);
-
-	public void save(Customer transientInstance) {
-		log.debug("saving Customer instance");
+	@Override
+	public void save(Deliveryadmin transientInstance) {
+		log.debug("saving Deliveryadmin instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -26,8 +24,9 @@ public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO 
 		}
 	}
 
-	public void delete(Customer persistentInstance) {
-		log.debug("deleting Customer instance");
+	@Override
+	public void delete(Deliveryadmin persistentInstance) {
+		log.debug("deleting Deliveryadmin instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -37,11 +36,12 @@ public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO 
 		}
 	}
 
-	public Customer findById(java.lang.Integer id) {
-		log.debug("getting Customer instance with id: " + id);
+	@Override
+	public Deliveryadmin findById(Integer id) {
+		log.debug("getting Deliveryadmin instance with id: " + id);
 		try {
-			Customer instance = (Customer) getSession().get("daoNew.Customer",
-					id);
+			Deliveryadmin instance = (Deliveryadmin) getSession().get(
+					"daoNew.Deliveryadmin", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -50,11 +50,12 @@ public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO 
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Customer> findByProperty(String propertyName, Object value) {
-		log.debug("finding Customer instance with property: " + propertyName
-				+ ", value: " + value);
+	@Override
+	public List<Deliveryadmin> findByProperty(String propertyName, Object value) {
+		log.debug("finding Deliveryadmin instance with property: "
+				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from Customer as model where model."
+			String queryString = "from Deliveryadmin as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -66,10 +67,11 @@ public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO 
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Customer> findAll() {
-		log.debug("finding all Customer instances");
+	@Override
+	public List<Deliveryadmin> findAll() {
+		log.debug("finding all Deliveryadmin instances");
 		try {
-			String queryString = "from Customer";
+			String queryString = "from Deliveryadmin";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {

@@ -17,8 +17,8 @@ public class CustomerServiceImpl implements CustomerServices {
 
 	@Override
 	public boolean login(Customer customer) {
-		Customer cus = this.customerDAO.findCustomer(customer.getUsername());
-		if (cus.getPassword().equals(customer.getPassword()))
+		if (this.customerDAO.findByProperty("username", customer.getUsername())
+				.size() > 0)
 			return true;
 		else
 			return false;
@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerServices {
 
 	@Override
 	public void register(Customer customer) {
-		this.customerDAO.insertCustomer(customer);
+		this.customerDAO.save(customer);
 	}
 
 }

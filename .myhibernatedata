@@ -1,6 +1,6 @@
 #MyEclipse Hibernate Properties
-#Wed Jun 27 20:22:38 CST 2012
-sessionFactoryName=
+#Wed Jun 27 21:35:04 CST 2012
+sessionFactoryName=beans.HibernateSessionFactory
 genBasicCompId=false
 profile=
 daoSFId=
@@ -22,3 +22,4 @@ reSettingsFile=
 configFile=/Logistics/WebRoot/WEB-INF/applicationContext.xml
 createConfigFile=false
 addLibs2Classpath=false
+baseDaoClass=BaseHibernateDAO
