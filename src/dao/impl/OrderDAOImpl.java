@@ -1,11 +1,12 @@
-package daoNew;
+package dao.impl;
 
 import java.util.List;
+import javax.persistence.criteria.Order;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.criterion.Example;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import dao.OrderDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for Order
@@ -19,8 +20,8 @@ import org.hibernate.criterion.Example;
  * @author MyEclipse Persistence Tools
  */
 
-public class OrderDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(OrderDAO.class);
+public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
+	private static final Log log = LogFactory.getLog(OrderDAOImpl.class);
 
 	public void save(Order transientInstance) {
 		log.debug("saving Order instance");
@@ -55,21 +56,8 @@ public class OrderDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Order instance) {
-		log.debug("finding Order instance by example");
-		try {
-			List results = getSession().createCriteria("daoNew.Order")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
+	@SuppressWarnings("unchecked")
+	public List<Order> findByProperty(String propertyName, Object value) {
 		log.debug("finding Order instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -84,7 +72,8 @@ public class OrderDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findAll() {
+	@SuppressWarnings("unchecked")
+	public List<Order> findAll() {
 		log.debug("finding all Order instances");
 		try {
 			String queryString = "from Order";
@@ -96,37 +85,4 @@ public class OrderDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Order merge(Order detachedInstance) {
-		log.debug("merging Order instance");
-		try {
-			Order result = (Order) getSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Order instance) {
-		log.debug("attaching dirty Order instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Order instance) {
-		log.debug("attaching clean Order instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
 }

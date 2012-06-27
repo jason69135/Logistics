@@ -1,11 +1,14 @@
-package daoNew;
+package dao.impl;
 
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.criterion.Example;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import dao.ReceiverDAO;
+
+import beans.Receiver;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -19,8 +22,8 @@ import org.hibernate.criterion.Example;
  * @author MyEclipse Persistence Tools
  */
 
-public class ReceiverDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(ReceiverDAO.class);
+public class ReceiverDAOImpl extends HibernateDaoSupport implements ReceiverDAO {
+	private static final Log log = LogFactory.getLog(ReceiverDAOImpl.class);
 
 	public void save(Receiver transientInstance) {
 		log.debug("saving Receiver instance");
@@ -56,21 +59,8 @@ public class ReceiverDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Receiver instance) {
-		log.debug("finding Receiver instance by example");
-		try {
-			List results = getSession().createCriteria("daoNew.Receiver")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
+	@SuppressWarnings("unchecked")
+	public List<Receiver> findByProperty(String propertyName, Object value) {
 		log.debug("finding Receiver instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -85,7 +75,8 @@ public class ReceiverDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findAll() {
+	@SuppressWarnings("unchecked")
+	public List<Receiver> findAll() {
 		log.debug("finding all Receiver instances");
 		try {
 			String queryString = "from Receiver";
@@ -97,37 +88,4 @@ public class ReceiverDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Receiver merge(Receiver detachedInstance) {
-		log.debug("merging Receiver instance");
-		try {
-			Receiver result = (Receiver) getSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Receiver instance) {
-		log.debug("attaching dirty Receiver instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Receiver instance) {
-		log.debug("attaching clean Receiver instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
 }

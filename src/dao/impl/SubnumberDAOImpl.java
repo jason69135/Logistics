@@ -1,11 +1,15 @@
-package daoNew;
+package dao.impl;
 
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.criterion.Example;
+
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import beans.Subnumber;
+
+import dao.SubnumberDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -19,8 +23,9 @@ import org.hibernate.criterion.Example;
  * @author MyEclipse Persistence Tools
  */
 
-public class SubnumberDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(SubnumberDAO.class);
+public class SubnumberDAOImpl extends HibernateDaoSupport implements
+		SubnumberDAO {
+	private static final Log log = LogFactory.getLog(SubnumberDAOImpl.class);
 
 	public void save(Subnumber transientInstance) {
 		log.debug("saving Subnumber instance");
@@ -56,21 +61,8 @@ public class SubnumberDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Subnumber instance) {
-		log.debug("finding Subnumber instance by example");
-		try {
-			List results = getSession().createCriteria("daoNew.Subnumber")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
+	@SuppressWarnings("unchecked")
+	public List<Subnumber> findByProperty(String propertyName, Object value) {
 		log.debug("finding Subnumber instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -85,7 +77,8 @@ public class SubnumberDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findAll() {
+	@SuppressWarnings("unchecked")
+	public List<Subnumber> findAll() {
 		log.debug("finding all Subnumber instances");
 		try {
 			String queryString = "from Subnumber";
@@ -93,40 +86,6 @@ public class SubnumberDAO extends BaseHibernateDAO {
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
-			throw re;
-		}
-	}
-
-	public Subnumber merge(Subnumber detachedInstance) {
-		log.debug("merging Subnumber instance");
-		try {
-			Subnumber result = (Subnumber) getSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Subnumber instance) {
-		log.debug("attaching dirty Subnumber instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Subnumber instance) {
-		log.debug("attaching clean Subnumber instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
 			throw re;
 		}
 	}

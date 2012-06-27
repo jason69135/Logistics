@@ -1,11 +1,14 @@
-package daoNew;
+package dao.impl;
 
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.criterion.Example;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import beans.Site;
+
+import dao.SiteDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for Site
@@ -19,8 +22,8 @@ import org.hibernate.criterion.Example;
  * @author MyEclipse Persistence Tools
  */
 
-public class SiteDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(SiteDAO.class);
+public class SiteDAOImpl extends HibernateDaoSupport implements SiteDAO {
+	private static final Log log = LogFactory.getLog(ReceiverDAOImpl.class);
 
 	public void save(Site transientInstance) {
 		log.debug("saving Site instance");
@@ -55,21 +58,8 @@ public class SiteDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Site instance) {
-		log.debug("finding Site instance by example");
-		try {
-			List results = getSession().createCriteria("daoNew.Site")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
+	@SuppressWarnings("unchecked")
+	public List<Site> findByProperty(String propertyName, Object value) {
 		log.debug("finding Site instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -84,7 +74,8 @@ public class SiteDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findAll() {
+	@SuppressWarnings("unchecked")
+	public List<Site> findAll() {
 		log.debug("finding all Site instances");
 		try {
 			String queryString = "from Site";
@@ -96,37 +87,4 @@ public class SiteDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public Site merge(Site detachedInstance) {
-		log.debug("merging Site instance");
-		try {
-			Site result = (Site) getSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Site instance) {
-		log.debug("attaching dirty Site instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Site instance) {
-		log.debug("attaching clean Site instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
 }

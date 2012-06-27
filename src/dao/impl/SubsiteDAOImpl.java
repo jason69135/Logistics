@@ -1,11 +1,13 @@
-package daoNew;
+package dao.impl;
 
 import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.criterion.Example;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import dao.SubsiteDAO;
+import beans.Subsite;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -19,8 +21,8 @@ import org.hibernate.criterion.Example;
  * @author MyEclipse Persistence Tools
  */
 
-public class SubsiteDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(SubsiteDAO.class);
+public class SubsiteDAOImpl extends HibernateDaoSupport implements SubsiteDAO {
+	private static final Log log = LogFactory.getLog(SubsiteDAOImpl.class);
 
 	public void save(Subsite transientInstance) {
 		log.debug("saving Subsite instance");
@@ -55,21 +57,8 @@ public class SubsiteDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Subsite instance) {
-		log.debug("finding Subsite instance by example");
-		try {
-			List results = getSession().createCriteria("daoNew.Subsite")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
+	@SuppressWarnings("unchecked")
+	public List<Subsite> findByProperty(String propertyName, Object value) {
 		log.debug("finding Subsite instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -84,7 +73,8 @@ public class SubsiteDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findAll() {
+	@SuppressWarnings("unchecked")
+	public List<Subsite> findAll() {
 		log.debug("finding all Subsite instances");
 		try {
 			String queryString = "from Subsite";
@@ -92,40 +82,6 @@ public class SubsiteDAO extends BaseHibernateDAO {
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
-			throw re;
-		}
-	}
-
-	public Subsite merge(Subsite detachedInstance) {
-		log.debug("merging Subsite instance");
-		try {
-			Subsite result = (Subsite) getSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Subsite instance) {
-		log.debug("attaching dirty Subsite instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Subsite instance) {
-		log.debug("attaching clean Subsite instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
 			throw re;
 		}
 	}

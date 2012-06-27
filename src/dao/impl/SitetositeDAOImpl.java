@@ -1,11 +1,14 @@
-package daoNew;
+package dao.impl;
 
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.criterion.Example;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import beans.Sitetosite;
+
+import dao.SitetositeDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -19,8 +22,9 @@ import org.hibernate.criterion.Example;
  * @author MyEclipse Persistence Tools
  */
 
-public class SitetositeDAO extends BaseHibernateDAO {
-	private static final Log log = LogFactory.getLog(SitetositeDAO.class);
+public class SitetositeDAOImpl extends HibernateDaoSupport implements
+		SitetositeDAO {
+	private static final Log log = LogFactory.getLog(SitetositeDAOImpl.class);
 
 	public void save(Sitetosite transientInstance) {
 		log.debug("saving Sitetosite instance");
@@ -56,21 +60,8 @@ public class SitetositeDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findByExample(Sitetosite instance) {
-		log.debug("finding Sitetosite instance by example");
-		try {
-			List results = getSession().createCriteria("daoNew.Sitetosite")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	public List findByProperty(String propertyName, Object value) {
+	@SuppressWarnings("unchecked")
+	public List<Sitetosite> findByProperty(String propertyName, Object value) {
 		log.debug("finding Sitetosite instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -85,7 +76,8 @@ public class SitetositeDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List findAll() {
+	@SuppressWarnings("unchecked")
+	public List<Sitetosite> findAll() {
 		log.debug("finding all Sitetosite instances");
 		try {
 			String queryString = "from Sitetosite";
@@ -93,41 +85,6 @@ public class SitetositeDAO extends BaseHibernateDAO {
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
-			throw re;
-		}
-	}
-
-	public Sitetosite merge(Sitetosite detachedInstance) {
-		log.debug("merging Sitetosite instance");
-		try {
-			Sitetosite result = (Sitetosite) getSession().merge(
-					detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Sitetosite instance) {
-		log.debug("attaching dirty Sitetosite instance");
-		try {
-			getSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Sitetosite instance) {
-		log.debug("attaching clean Sitetosite instance");
-		try {
-			getSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
 			throw re;
 		}
 	}
