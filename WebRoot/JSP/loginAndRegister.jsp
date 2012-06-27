@@ -27,7 +27,7 @@
 	<a href="#">收藏网页</a>
 	<a href="LoginAction.action">登陆</a>
 	<a href="RegisterAction.action">注册</a>
-	<jsp:include page="../html/navi.html" flush="true" />
+	<jsp:include page="../JSP/navi.jsp" flush="true" />
 	<h2>请登录或注册</h2>只需15秒
 	注册
 	<form action="RegisterAction.action" method="POST">

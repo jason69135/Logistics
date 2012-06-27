@@ -25,7 +25,7 @@
 	<a href="#">สีฒุอ๘าณ</a>
 	<a href="LoginAction.action">ตวยฝ</a>
 	<a href="RegisterAction.action">ืขฒแ</a>
-	<jsp:include page="html/navi.html" flush="true" />
+	<jsp:include page="JSP/navi.jsp" flush="true" />
 	<form action="LoginAction.action" method="POST">
 		ตว๊‘ฮาตฤ** <input type="text" name="username" /> <input type="password"
 			name="password" /> <input type="submit" value="ตวยฝ">

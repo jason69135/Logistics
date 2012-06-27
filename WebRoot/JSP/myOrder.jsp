@@ -27,7 +27,7 @@
 <body>
 	<a href="#">收藏网页</a> 您好,<%=session.getAttribute("token")%><a
 		href="LoginOutAction.action">注销</a>
-	<jsp:include page="../html/navi.html"></jsp:include>
+	<jsp:include page="navi.jsp"></jsp:include>
 	<jsp:include page="include/sidebar.jsp"></jsp:include>
 	<h2>物流服务</h2>
 	<a href="#">在线支付</a>
