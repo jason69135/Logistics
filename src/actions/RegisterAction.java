@@ -1,32 +1,29 @@
 package actions;
 
-import services.VisitorServices;
-import beans.Visitor;
-
+import services.CustomerServices;
+import beans.Customer;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class RegisterAction extends ActionSupport {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
-	private Visitor visitor;
-	private VisitorServices vs;
+	private Customer customer;
+	private CustomerServices customerServices;
 
-	public Visitor getVisitor() {
-		return visitor;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setVisitor(Visitor visitor) {
-		this.visitor = visitor;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-	public void setVs(VisitorServices vs) {
-		this.vs = vs;
+	public void setCustomerServices(CustomerServices customerServices) {
+		this.customerServices = customerServices;
 	}
 
 	public String execute() {
-		this.vs.register(this.visitor);
+		this.customerServices.register(this.customer);
 		return SUCCESS;
 	}
 }

@@ -28,21 +28,18 @@
 	<a href="LoginAction.action">登陆</a>
 	<a href="RegisterAction.action">注册</a>
 	<jsp:include page="../JSP/navi.jsp" flush="true" />
-	<h2>请登录或注册</h2>只需15秒
-	注册
+	<h2>请登录或注册</h2>
+	只需15秒 注册
 	<form action="RegisterAction.action" method="POST">
-		用户名：<input type="text" name="username"/>
-		邮箱地址：<input type="text" name="email"/>
-		密码：<input type="text" name="password"/>
-		确认密码：<input type="text" name="againPass"/>
-		验证码<input type="text" name="valid"/>
-		<input type="submit" value="注册"> 
+		用户名：<input type="text" name="customer.username" /> 邮箱地址：<input
+			type="text" name="customer.email" /> 密码：<input type="text"
+			name="customer.password" /> 确认密码：<input type="text" name="againPass" />
+		验证码<input type="text" name="valid" /> <input type="submit" value="注册">
 	</form>
 	登陆
 	<form action="LoginAction.action" method="POST">
-		用户名：<input type="text" name="username"/>
-		密码：<input type="text" name="password"/>
-		<input type="submit" value="登陆"> 
+		用户名：<input type="text" name="username" /> 密码：<input type="text"
+			name="password" /> <input type="submit" value="登陆">
 	</form>
 </body>
 </html>

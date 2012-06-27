@@ -4,48 +4,57 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-	<bean id="dataSource"
-        class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName"
-            value="com.mysql.jdbc.Driver">
-        </property>
-        <property name="url" value="jdbc:mysql://localhost:3306/mysql"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="root"></property>
-    </bean>
-    <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="dataSource">
-            <ref bean="dataSource" />
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">
-                    org.hibernate.dialect.MySQLDialect
-                </prop>
-                <prop key="hibernate.connection.autocommit">true</prop>
-                <prop key="hibernate.show_sql">true</prop>
-            </props>
-        </property>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/logistics"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
 		<property name="mappingResources">
 			<list>
-				<value>beans/Visitor.hbm.xml</value>
+				<value>beans/Claims.hbm.xml</value>
+				<value>beans/Customer.hbm.xml</value>
+				<value>beans/Deliveryadmin.hbm.xml</value>
+				<value>beans/Letters.hbm.xml</value>
+				<value>beans/Order.hbm.xml</value>
+				<value>beans/Receiver.hbm.xml</value>
+				<value>beans/Site.hbm.xml</value>
+				<value>beans/Sitetosite.hbm.xml</value>
+				<value>beans/Subnumber.hbm.xml</value>
+				<value>beans/Subsite.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
 
-	<bean id="VisitorDAO" class="dao.impl.VisitorDAOImpl">
+	<bean id="CustomerDAO" class="dao.impl.CustomerDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="VisitorServices" class="services.impl.VisitorServiceImpl">
-		<property name="vd" ref="VisitorDAO"></property>
+	<bean id="CustomerServices" class="services.impl.CustomerServiceImpl">
+		<property name="customerDAO" ref="CustomerDAO"></property>
 	</bean>
+	<bean id="springRegisterAction" class="actions.RegisterAction">
+		<property name="customerServices" ref="CustomerServices"></property>
+	</bean>
+
 	<bean id="springLoginAction" class="actions.LoginAction">
 	</bean>
 	<bean id="springManageOrderAction" class="actions.ManageOrderAction">
 	</bean>
-	<bean id="springRegisterAction" class="actions.RegisterAction">
-		<property name="vs" ref="VisitorServices"></property>
-	</bean>
-	
+
+
 </beans>
