@@ -25,8 +25,8 @@
 </head>
 
 <body>
-	<a href="#">收藏网页</a>
-	您好,<%=session.getAttribute("username") %><a href="#">注销</a>
+	<a href="#">收藏网页</a> 您好,<%=session.getAttribute("token")%><a
+		href="LoginOutAction.action">注销</a>
 	<ul id="menu">
 		<li class="menu"><a href="#">首页</a></li>
 		<li class="menu"><a href="#">我的配送</a>
@@ -53,12 +53,15 @@
 			</ul>
 		</li>
 	</ul>
-	账户信息<a href="#">刷新</a>
-	您好,<%=session.getAttribute("username")%><a href="#">注销</a>
+	账户信息
+	<a href="#">刷新</a> 您好,<%=session.getAttribute("username")%><a href="#">注销</a>
 	<ul>
-		<li>运输中订单<a href="#"><%=session.getAttribute("transOrder")%></a></li>
-		<li>代付款订单<a href="#"><%=session.getAttribute("toPayOrder")%></a></li>
-		<li>未读站内信<a href="#"><%=session.getAttribute("siteMessage")%></a></li>
+		<li>运输中订单<a href="#"><%=session.getAttribute("transOrder")%></a>
+		</li>
+		<li>代付款订单<a href="#"><%=session.getAttribute("toPayOrder")%></a>
+		</li>
+		<li>未读站内信<a href="#"><%=session.getAttribute("siteMessage")%></a>
+		</li>
 	</ul>
 	<a href="OrderBillAction.action">我要下单</a>
 	<ul id="menu">
@@ -87,28 +90,28 @@
 	<a href="#">修改密码</a>
 	<h2>最新订单情况</h2>
 	<table border="1">
-  		<tr>
-    		<th>订单号</th>
-    		<th>运单号</th>
-    		<th>收货人</th>
-    		<th>货物名称</th>
-    		<th>下单日期</th>
-    		<th>物流状态</th>
-    		<th>运费(元)</th>
-    		<th>支付方式</th>
-    		<th>操作</th>
-  		</tr>
-  		<tr>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-  		</tr>
+		<tr>
+			<th>订单号</th>
+			<th>运单号</th>
+			<th>收货人</th>
+			<th>货物名称</th>
+			<th>下单日期</th>
+			<th>物流状态</th>
+			<th>运费(元)</th>
+			<th>支付方式</th>
+			<th>操作</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
 	</table>
 </body>
 </html>
