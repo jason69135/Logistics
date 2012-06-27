@@ -21,44 +21,28 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
 </head>
 
 <body>
-	<a href="#">收藏网页</a> 您好,<%=session.getAttribute("token")%><a
-		href="LoginOutAction.action">注销</a>
-	<jsp:include page="../html/navi.html"></jsp:include>
-	<jsp:include page="include/sidebar.jsp"></jsp:include>
-	<h2>物流服务</h2>
-	<a href="#">在线支付</a>
-	<a href="#">订单管理</a>
-	<a href="#">账单记录</a>
-	<a href="#">我要理赔</a>
-	<a href="#">修改密码</a>
-	<h2>最新订单情况</h2>
-	<table border="1">
-		<tr>
-			<th>订单号</th>
-			<th>运单号</th>
-			<th>收货人</th>
-			<th>货物名称</th>
-			<th>下单日期</th>
-			<th>物流状态</th>
-			<th>运费(元)</th>
-			<th>支付方式</th>
-			<th>操作</th>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
+	<a href="#">收藏网页</a>
+	<a href="LoginAction.action">登陆</a>
+	<a href="RegisterAction.action">注册</a>
+	<jsp:include page="../html/navi.html" flush="true" />
+	<h2>请登录或注册</h2>只需15秒
+	注册
+	<form action="RegisterAction.action" method="POST">
+		用户名：<input type="text" name="username"/>
+		邮箱地址：<input type="text" name="email"/>
+		密码：<input type="text" name="password"/>
+		确认密码：<input type="text" name="againPass"/>
+		验证码<input type="text" name="valid"/>
+		<input type="submit" value="注册"> 
+	</form>
+	登陆
+	<form action="LoginAction.action" method="POST">
+		用户名：<input type="text" name="username"/>
+		密码：<input type="text" name="password"/>
+		<input type="submit" value="登陆"> 
+	</form>
 </body>
 </html>

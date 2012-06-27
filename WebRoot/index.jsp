@@ -22,66 +22,10 @@
 -->
 </head>
 <body>
-	<script src="js/jquery.js"></script>
-	<script>
-		$(document).ready(
-				function() {
-					var toggle = function(direction, display) {
-						return function() {
-							var self = this;
-							var ul = $("ul", this);
-							if (ul.css("display") == display
-									&& !self["block" + direction]) {
-								self["block" + direction] = true;
-								ul["slide" + direction]("slow", function() {
-									self["block" + direction] = false;
-								});
-							}
-						};
-					};
-					$("li.menu").hover(toggle("Down", "none"),
-							toggle("Up", "block"));
-					$("li.menu ul").hide();
-				});
-	</script>
 	<a href="#">收藏网页</a>
 	<a href="LoginAction.action">登陆</a>
 	<a href="RegisterAction.action">注册</a>
-	<ul id="menu">
-		<li class="menu"><a href="#">首页</a>
-		</li>
-		<li class="menu"><a href="#">我的配送</a>
-			<ul>
-				<li><a href="ManageOrderAction.action">我的订单</a>
-				</li>
-				<li><a href="#">我的账单</a>
-				</li>
-				<li><a href="#">联系人管理</a>
-				</li>
-				<li><a href="#">在线理赔</a>
-				</li>
-				<li><a href="#">站内信息</a>
-				</li>
-				<li><a href="#">个人资料设置</a>
-				</li>
-			</ul></li>
-		<li class="menu"><a href="#">网上托运</a>
-			<ul>
-				<li><a href="#">网上下单</a>
-				</li>
-				<li><a href="#">价格查询</a>
-				</li>
-				<li><a href="#">站点查询</a>
-				</li>
-			</ul></li>
-		<li class="menu"><a href="#">追踪与收货</a>
-			<ul>
-				<li><a href="#">货物追踪</a>
-				</li>
-				<li><a href="#">我的收货单</a>
-				</li>
-			</ul></li>
-	</ul>
+	<jsp:include page="html/navi.html" flush="true" />
 	<form action="LoginAction.action" method="POST">
 		登陸我的** <input type="text" name="username" /> <input type="password"
 			name="password" /> <input type="submit" value="登陆">
@@ -90,10 +34,14 @@
 	<a href="RegisterAction.action">注册</a>
 	<a href="OrderBillAction.action">网上下单</a>
 	<ul>
-		<li><a href="ManageBillAction.action">订单管理</a></li>
-		<li><a href="PayBillAction.action">我要支付</a></li>
-		<li><a href="#">我要支付</a></li>
-		<li><a href="ArgueAction.action">在线理赔</a></li>
+		<li><a href="ManageBillAction.action">订单管理</a>
+		</li>
+		<li><a href="PayBillAction.action">我要支付</a>
+		</li>
+		<li><a href="#">我要支付</a>
+		</li>
+		<li><a href="ArgueAction.action">在线理赔</a>
+		</li>
 	</ul>
 	<form action="TrackGoodsAction.action" method="POST">
 		货物追踪 请输入运单号<input type="text" name="order.number"> <input

@@ -5,14 +5,15 @@
 		<action name="LoginAction" class="springLoginAction">
 			<result name="success">index.jsp</result>
 		</action>
+		<action name="ManageOrderAction" class="springManageOrderAction">
+			<result name="success">JSP/myOrder.jsp</result>
+			<result name="input">JSP/loginAndRegister.jsp</result>
+		</action>
 		<action name="LoginOutAction" class="actions.LoginAction" method="logOut">
 			<result name="success">index.jsp</result>
 		</action>
 		<action name="RegisterAction" class="springRegisterAction">
 			<result name="success">success.jsp</result>
-		</action>
-		<action name="ManageOrderAction" class="springManageOrderAction">
-			<result name="success">JSP/myOrder.jsp</result>
 		</action>
 	</package>
 </struts>    
