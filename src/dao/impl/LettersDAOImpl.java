@@ -6,7 +6,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import beans.Letters;
 
-public class LettersDAO extends HibernateDaoSupport {
+public class LettersDAOImpl extends HibernateDaoSupport {
 
 	public void save(Letters transientInstance) {
 			getHibernateTemplate().save(transientInstance);

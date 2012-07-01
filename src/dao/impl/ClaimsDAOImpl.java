@@ -7,7 +7,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import beans.Claims;
 
-public class ClaimsDAO extends HibernateDaoSupport implements dao.ClaimsDAO {
+public class ClaimsDAOImpl extends HibernateDaoSupport implements dao.ClaimsDAO {
 
 	public void save(Claims transientInstance) {
 			getSession().save(transientInstance);
