@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Logistics--Yangfan"
+  id="myeclipse.1341110379684"
+  context-root="/Logistics--Yangfan"
+  j2ee-spec="5.0"
+  archive="Logistics--Yangfan.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

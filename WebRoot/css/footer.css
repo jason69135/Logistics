@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+#footer {
+	width: 800px;
+	height: 100px;
+	margin-top: 20px;
+	border: 1px black solid;
+	height: 31px；
+}
+.f-nav {
+color: #C3C2D5;
+height: 20px;
+line-height: 20px;
+position: absolute;
+bottom: -90px;
+right: 300px;
+}
