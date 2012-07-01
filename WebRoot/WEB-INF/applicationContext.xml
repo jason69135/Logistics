@@ -4,29 +4,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-	<bean id="dataSource"
-        class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName"
-            value="com.mysql.jdbc.Driver">
-        </property>
-        <property name="url" value="jdbc:mysql://localhost:3306/logistics"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="262728"></property>
-    </bean>
-    <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="dataSource">
-            <ref bean="dataSource" />
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">
-                    org.hibernate.dialect.MySQLDialect
-                </prop>
-                <prop key="hibernate.connection.autocommit">true</prop>
-                <prop key="hibernate.show_sql">true</prop>
-            </props>
-        </property>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/logistics"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
 		<property name="mappingResources">
 			<list>
 				<value>beans/Customer.hbm.xml</value>
@@ -39,9 +37,15 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="UserService" class="services.impl.UserServiceImpl">
-	    <property name="customerDao" ref="CustomerDao"></property>
+		<property name="customerDao" ref="CustomerDao"></property>
 	</bean>
 	<bean id="springLoginAction" class="actions.useraction.LoginAction">
 		<property name="userService" ref="UserService"></property>
-	</bean>	
+	</bean>
+	<bean id="springRegisterAction" class="actions.useraction.RegisterAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	<bean id="springChangePasswordAction" class="actions.useraction.ChangeEmailAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
 </beans>

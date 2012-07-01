@@ -3,8 +3,16 @@
 <struts>
 	<package name="ssh2" extends="struts-default">
 		<action name="LoginAction" class="springLoginAction">
-			<result name="success">index.jsp</result>
-			<result name="error">footer.jsp</result>
+			<result name="success">clientMain.jsp</result>
+			<result name="error">clientIndex.jsp</result>
+		</action>
+		<action name="RegisterAction" class="springRegisterAction">
+			<result name="success">success.jsp</result>
+			<result name="error">clientIndex.jsp</result>
+		</action>
+		<action name="ChangePasswordAction" class="springChangePasswordAction">
+			<result name="success">success.jsp</result>
+			<result name="error">clientMain.jsp</result>
 		</action>
 	</package>
 </struts>    

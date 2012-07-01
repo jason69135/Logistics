@@ -3,6 +3,7 @@ package actions.useraction;
 import services.UserService;
 import beans.Customer;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
@@ -28,9 +29,12 @@ public class LoginAction extends ActionSupport {
 	}
 
 	public String execute() {
-		if(this.userService.userLogin(customer.getUsername(), customer.getPassword())){
+		if (this.userService.userLogin(customer.getUsername(),
+				customer.getPassword())) {
+			ActionContext.getContext().getSession()
+					.put("username", this.customer.getUsername());
 			return SUCCESS;
 		}
-             return ERROR;
+		return ERROR;
 	}
 }
