@@ -11,15 +11,15 @@ public class ChangeEmailAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Customer customer;
 	private UserService userService;
-	private String newPassword;
+	private String newEmail;
 	private String username;
 
-	public String getNewPassword() {
-		return newPassword;
+	public String getNewEmail() {
+		return newEmail;
 	}
 
-	public void setNewPassword(String newPassword) {
-		this.newPassword = newPassword;
+	public void setNewEmail(String newEmail) {
+		this.newEmail = newEmail;
 	}
 
 	public Customer getCustomer() {
@@ -41,11 +41,15 @@ public class ChangeEmailAction extends ActionSupport {
 	public String execute() {
 		this.username = ActionContext.getContext().getSession().get("username")
 				.toString();
+		this.customer = new Customer();
 		this.customer.setUsername(username);
 		if (!username.equals(null)) {
-			boolean flag = userService.changePassword(customer, newPassword);
-			if (flag)
+			boolean flag = userService.changeEmail(customer, newEmail);
+			if (flag) {
+				ActionContext.getContext().getSession().remove("email");
+				ActionContext.getContext().getSession().put("email", newEmail);
 				return SUCCESS;
+			}
 		}
 		return INPUT;
 	}

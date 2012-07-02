@@ -45,7 +45,13 @@
 	<bean id="springRegisterAction" class="actions.useraction.RegisterAction">
 		<property name="userService" ref="UserService"></property>
 	</bean>
-	<bean id="springChangePasswordAction" class="actions.useraction.ChangeEmailAction">
+	<bean id="springChangePasswordAction" class="actions.useraction.ChangePasswordAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	<bean id="springChangeEmailAction" class="actions.useraction.ChangeEmailAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	<bean id="springSearchUserAction" class="actions.useraction.SearchUserAction">
 		<property name="userService" ref="UserService"></property>
 	</bean>
 </beans>

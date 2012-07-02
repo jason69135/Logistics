@@ -37,7 +37,6 @@ public class ChangePasswordAction extends ActionSupport {
 	}
 
 	public String execute() {
-		System.out.print("aaaaaaaaaaaaaaaaaaaaaaaa");
 		this.username = ActionContext.getContext().getSession().get("username")
 				.toString();
 		this.customer.setUsername(username);
