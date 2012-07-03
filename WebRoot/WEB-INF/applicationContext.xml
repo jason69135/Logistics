@@ -4,32 +4,42 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 
-	<bean id="dataSource"
-        class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName"
-            value="com.mysql.jdbc.Driver">
-        </property>
-        <property name="url" value="jdbc:mysql://localhost:3306/logistics"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="262728"></property>
-    </bean>
-    <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="dataSource">
-            <ref bean="dataSource" />
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">
-                    org.hibernate.dialect.MySQLDialect
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/logistics"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="262728"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
                 </prop>
-                <prop key="hibernate.connection.autocommit">true</prop>
-                <prop key="hibernate.show_sql">true</prop>
-            </props>
-        </property>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
 		<property name="mappingResources">
 			<list>
 				<value>beans/Customer.hbm.xml</value>
+				<value>beans/Letters.hbm.xml</value>
+				<value>beans/Order.hbm.xml</value>
+				<value>beans/Route.hbm.xml</value>
+				<value>beans/Sitetosite.hbm.xml</value>
+				<value>beans/Receiver.hbm.xml</value>
+				<value>beans/Subsite.hbm.xml</value>
+				<value>beans/Number.hbm.xml</value>
+				<value>beans/Site.hbm.xml</value>
+				<value>beans/News.hbm.xml</value>
+				<value>beans/Claims.hbm.xml</value>
+				<value>beans/Siteadmin.hbm.xml</value>
+				<value>beans/Subsiteadmin.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -38,10 +48,146 @@
 	<bean id="CustomerDao" class="dao.impl.CustomerDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="UserService" class="services.impl.UserServiceImpl">
-	    <property name="customerDao" ref="CustomerDao"></property>
+	<bean id="SiteadminDao" class="dao.impl.SiteadminDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="springLoginAction" class="actions.useraction.LoginAction">
+	<bean id="SiteDao" class="dao.impl.SiteDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="OrderDao" class="dao.impl.OrderDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="RouteDao" class="dao.impl.RouteDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="NewsDao" class="dao.impl.NewsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="ReceiverDao" class="dao.impl.ReceiverDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="NumberDao" class="dao.impl.NumberDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="SitetoSiteDao" class="dao.impl.SitetositeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="LettersDao" class="dao.impl.LettersDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="SubsiteDao" class="dao.impl.SubsiteDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="SitetositeDao" class="dao.impl.SitetositeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="RecieverDao" class="dao.impl.ReceiverDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="ClaimsDao" class="dao.impl.ClaimsDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="UserService" class="services.impl.UserServiceImpl">
+		<property name="customerDao" ref="CustomerDao"></property>
+	</bean>
+	<bean id="RouteService" class="services.impl.RouteServiceImpl">
+		<property name="routeDao" ref="RouteDao"></property>
+	</bean>
+	<bean id="NewsService" class="services.impl.NewsServiceImpl">
+		<property name="newsdao" ref="NewsDao"></property>
+	</bean>
+	<bean id="SiteService" class="services.impl.SiteServiceImpl">
+		<property name="siteDao" ref="SiteDao"></property>
+	</bean>
+	<bean id="MessageService" class="services.impl.MessageServiceImpl">
+		<property name="customerDao" ref="CustomerDao"></property>
+		<property name="lettersDao" ref="LettersDao"></property>
+	</bean>
+	<bean id="OrderService" class="services.impl.OrderServiceImpl">
+		<property name="orderDao" ref="OrderDao"></property>
+		<property name="customerDao" ref="CustomerDao"></property>
+		<property name="routeDao" ref="RouteDao"></property>
+		<property name="receiverDao" ref="ReceiverDao"></property>
+		<property name="sitetositeDao" ref="SitetoSiteDao"></property>
+		<property name="subsiteDao" ref="SubsiteDao"></property>
+	</bean>
+	<bean id="No1adminService" class="services.impl.No1AdminServiceImpl">
+		<property name="siteDao" ref="SiteDao"></property>
+		<property name="siteadminDao" ref="SiteadminDao"></property>
+	</bean>
+	<bean id="RecieverService" class="services.impl.RecieverServiceImpl">
+		<property name="recieverDao" ref="RecieverDao"></property>
+		<property name="subsiteDao" ref="SubsiteDao"></property>
+		<property name="customerDao" ref="CustomerDao"></property>
+	</bean>
+	<bean id="SitesiteService" class="services.impl.SiteSiteServiceImpl">
+		<property name="sitetositeDao" ref="SitetositeDao"></property>
+		<property name="subsiteDao" ref="SubsiteDao"></property>
+		<property name="routeDao" ref="RouteDao"></property>
+	</bean>
+	<bean id="ComplainlistService" class="services.impl.ComplainlistServiceImpl">
+		<property name="claimsDao" ref="ClaimsDao"></property>
+	</bean>
+	<bean id="NumberService" class="services.impl.NumberServiceImpl">
+		<property name="numberDao" ref="NumberDao"></property>
+		<property name="routeDao" ref="RouteDao"></property>
+		<property name="subsiteDao" ref="SubsiteDao"></property>
+	</bean>
+	<bean id="springUserLoginAction" class="actions.useraction.LoginAction">
+		<property name="userService" ref="UserService"></property>
+		<property name="messageService" ref="MessageService"></property>
+		<property name="newsService" ref="NewsService"></property>
+	</bean>
+	<bean id="springShowMessageAction" class="actions.messageaction.ShowMessageAction">
+		<property name="messageservice" ref="MessageService"></property>
+	</bean>
+	<bean id="springMakeOrderAction" class="actions.orderaction.MakeOrderAction">
+		<property name="orderservice" ref="OrderService"></property>
+		<property name="recieverservice" ref="RecieverService"></property>
+	</bean>
+	<bean id="springCheckFeeAction" class="actions.sitetositeaction.CheckFeeAction">
+		<property name="sitesiteService" ref="SitesiteService"></property>
+	</bean>
+	<bean id="springAddComplainAction" class="actions.complainlistaction.AddComplainAction">
+		<property name="complainlistService" ref="ComplainlistService"></property>
+	</bean>
+	<bean id="springTrackOrderAction" class="actions.orderaction.TrackOrderAction">
+		<property name="orderservice" ref="OrderService"></property>
+	</bean>
+	<bean id="springCheckOrderAction" class="actions.orderaction.CheckOrderAction">
+		<property name="orderservice" ref="OrderService"></property>
+	</bean>
+	<bean id="springShowDetailOrderAction" class="actions.orderaction.ShowDetailOrderAction">
+		<property name="orderservice" ref="OrderService"></property>
+	</bean>
+	<bean id="springCheckPersonsetAction" class="actions.useraction.ShowPersonsetAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	<bean id="springUpdateEmailAction" class="actions.useraction.UpdateEmailAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	<bean id="springUpdatePasswordAction" class="actions.useraction.UpdatePasswordAction">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	<bean id="springSearchOrderAction" class="actions.orderaction.SearchOrderAction">
+		<property name="orderservice" ref="OrderService"></property>
+	</bean>
+	<bean id="springSearchUserAction" class="actions.useraction.SearchUserAction">
+		<property name="userservice" ref="UserService"></property>
+	</bean>
+	<bean id="springSearchAllNumberAction" class="actions.numberaction.ShowAllNumberAction">
+		<property name="numberservice" ref="NumberService"></property>
+	</bean>
+	<bean id="springSearchAllSubsiteAction" class="actions.subsiteaction.SearchAllSubsiteAction">
+		<property name="siteservice" ref="SiteService"></property>
+	</bean>
+	<bean id="springSearchAllSiteAdminAction" class="actions.No1adminaction.ShowAllSiteAdminAction">
+		<property name="no1adminservice" ref="No1adminService"></property>
+	</bean>
+	<bean id="springSearchAllRouteAction" class="actions.routeaction.SearchAllRouteAction">
+		<property name="routeService" ref="RouteService"></property>
+	</bean>
+	<bean id="springUserRegisterAction" class="actions.useraction.RegisterAction">
 		<property name="userService" ref="UserService"></property>
 	</bean>	
 </beans>

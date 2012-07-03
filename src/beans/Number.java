@@ -1,7 +1,5 @@
 package beans;
 
-import java.sql.Time;
-
 /**
  * Number entity. @author MyEclipse Persistence Tools
  */
@@ -16,7 +14,7 @@ public class Number implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Integer routeid;
-	private Time starttime;
+	private Integer starttime;
 	private Integer size;
 
 	// Constructors
@@ -26,7 +24,7 @@ public class Number implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Number(Integer routeid, Time starttime, Integer size) {
+	public Number(Integer routeid, Integer starttime, Integer size) {
 		this.routeid = routeid;
 		this.starttime = starttime;
 		this.size = size;
@@ -50,11 +48,11 @@ public class Number implements java.io.Serializable {
 		this.routeid = routeid;
 	}
 
-	public Time getStarttime() {
+	public Integer getStarttime() {
 		return this.starttime;
 	}
 
-	public void setStarttime(Time starttime) {
+	public void setStarttime(Integer starttime) {
 		this.starttime = starttime;
 	}
 

@@ -16,10 +16,14 @@ public class CustomerDAOImpl extends HibernateDaoSupport implements dao.Customer
 			getHibernateTemplate().delete(persistentInstance);
 
 	}
-
+	
 	@SuppressWarnings("unchecked")
-	public List<Customer> find(String username) {
-			String queryString = "from Customer where username='"+username+"'";
-			return getHibernateTemplate().find(queryString);
+	public List<Customer> findByName(String username){
+		String queryString = "from Customer where username='"+username+"'";
+		return getHibernateTemplate().find(queryString);
+	}
+	
+	public void update(Customer persistentInstance) {
+		this.getHibernateTemplate().update(persistentInstance);
 	}
 }

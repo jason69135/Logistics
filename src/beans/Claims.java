@@ -13,10 +13,18 @@ public class Claims implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private Integer orderid;
+	private String orderno;
 	private Integer fee;
 	private String reason;
 	private String person;
+
+	public String getOrderno() {
+		return orderno;
+	}
+
+	public void setOrderno(String orderno) {
+		this.orderno = orderno;
+	}
 
 	// Constructors
 
@@ -25,17 +33,17 @@ public class Claims implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Claims(Integer id, Integer orderid, String reason) {
+	public Claims(Integer id, String orderno, String reason) {
 		this.id = id;
-		this.orderid = orderid;
+		this.orderno = orderno;
 		this.reason = reason;
 	}
 
 	/** full constructor */
-	public Claims(Integer id, Integer orderid, Integer fee, String reason,
+	public Claims(Integer id, String orderno, Integer fee, String reason,
 			String person) {
 		this.id = id;
-		this.orderid = orderid;
+		this.orderno = orderno;
 		this.fee = fee;
 		this.reason = reason;
 		this.person = person;
@@ -49,14 +57,6 @@ public class Claims implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getOrderid() {
-		return this.orderid;
-	}
-
-	public void setOrderid(Integer orderid) {
-		this.orderid = orderid;
 	}
 
 	public Integer getFee() {

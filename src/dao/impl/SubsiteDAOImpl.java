@@ -3,9 +3,11 @@ package dao.impl;
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import dao.SubsiteDAO;
+
 import beans.Subsite;
 
-public class SubsiteDAOImpl extends HibernateDaoSupport {
+public class SubsiteDAOImpl extends HibernateDaoSupport implements SubsiteDAO{
 
 	public void save(Subsite transientInstance) {
 
@@ -20,11 +22,10 @@ public class SubsiteDAOImpl extends HibernateDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Subsite> findByProperty(String propertyName, Object value) {
+	public List<Subsite> findByname(String subsitename) {
 
-		String queryString = "from Subsite as model where model."
-				+ propertyName + "= ?";
-		return getHibernateTemplate().find(queryString, value);
+		String queryString = "from Subsite where sitename='" + subsitename + "'";
+		return getHibernateTemplate().find(queryString);
 	}
 
 }

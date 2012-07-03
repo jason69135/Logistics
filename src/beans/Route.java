@@ -13,8 +13,25 @@ public class Route implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private Integer siteid;
+	private Integer startsiteid;
+	private Integer finishsiteid;
 	private String pass;
+
+	public Integer getStartsiteid() {
+		return startsiteid;
+	}
+
+	public void setStartsiteid(Integer startsiteid) {
+		this.startsiteid = startsiteid;
+	}
+
+	public Integer getFinishsiteid() {
+		return finishsiteid;
+	}
+
+	public void setFinishsiteid(Integer finishsiteid) {
+		this.finishsiteid = finishsiteid;
+	}
 
 	// Constructors
 
@@ -23,12 +40,11 @@ public class Route implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Route(Integer siteid, String pass) {
-		this.siteid = siteid;
+	public Route(Integer startsiteid, Integer finishsiteid, String pass) {
+		this.startsiteid = startsiteid;
+		this.finishsiteid = finishsiteid;
 		this.pass = pass;
 	}
-
-	// Property accessors
 
 	public Integer getId() {
 		return this.id;
@@ -36,14 +52,6 @@ public class Route implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getSiteid() {
-		return this.siteid;
-	}
-
-	public void setSiteid(Integer siteid) {
-		this.siteid = siteid;
 	}
 
 	public String getPass() {

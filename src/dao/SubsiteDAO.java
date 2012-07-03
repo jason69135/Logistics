@@ -8,7 +8,6 @@ public interface SubsiteDAO{
 
 	public void save(Subsite transientInstance);
 	public void delete(Subsite persistentInstance);
-
-	public List<Subsite> findAll();
+	public List<Subsite> findByname(String subsitename);
 	
 }

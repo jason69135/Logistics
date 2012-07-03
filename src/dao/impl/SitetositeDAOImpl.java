@@ -3,9 +3,11 @@ package dao.impl;
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import dao.SitetositeDAO;
+
 import beans.Sitetosite;
 
-public class SitetositeDAOImpl extends HibernateDaoSupport {
+public class SitetositeDAOImpl extends HibernateDaoSupport implements SitetositeDAO{
 
 	public void save(Sitetosite transientInstance) {
 
@@ -20,11 +22,10 @@ public class SitetositeDAOImpl extends HibernateDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Sitetosite> findByProperty(String propertyName, Object value) {
+	public List<Sitetosite> findBysite(int sitea,int siteb) {
 
-		String queryString = "from Sitetosite as model where model."
-				+ propertyName + "= ?";
-		return getHibernateTemplate().find(queryString, value);
+		String queryString = "from Sitetosite where sitea='"+sitea+"' and siteb='"+siteb+"'";
+		return getHibernateTemplate().find(queryString);
 
 	}
 

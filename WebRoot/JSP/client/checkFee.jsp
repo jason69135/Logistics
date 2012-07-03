@@ -95,7 +95,7 @@
 							<a href="#">退出</a>
 							<br>
 							<br>
-							<input type="button" value="网上下单" onclick=window.location='makeOrder.jsp';
+							<input type="button" value="网上下单" onclick="window.location='makeOrder.jsp'";
 >
 						</div>
 					</div>

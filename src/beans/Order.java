@@ -13,7 +13,7 @@ public class Order implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private Integer orderNo;
+	private String orderNo;
 	private String goodname;
 	private Float weight;
 	private Float sprice;
@@ -21,7 +21,7 @@ public class Order implements java.io.Serializable {
 	private String remark;
 	private Integer cusid;
 	private Integer priority;
-	private Integer numberid;
+	private Integer routeid;
 	private Integer recieveid;
 	private String payway;
 	private String paystate;
@@ -49,9 +49,9 @@ public class Order implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Order(Integer id, Integer orderNo, String goodname, Float weight,
+	public Order(Integer id, String orderNo, String goodname, Float weight,
 			Float sprice, Float fee, String remark, Integer cusid,
-			Integer priority, Integer numberid, Integer recieveid,
+			Integer priority, Integer routeid, Integer recieveid,
 			String payway, String paystate, String checkstate,
 			String breakstate, String status, String loststate) {
 		this.id = id;
@@ -63,7 +63,7 @@ public class Order implements java.io.Serializable {
 		this.remark = remark;
 		this.cusid = cusid;
 		this.priority = priority;
-		this.numberid = numberid;
+		this.routeid = routeid;
 		this.recieveid = recieveid;
 		this.payway = payway;
 		this.paystate = paystate;
@@ -83,11 +83,11 @@ public class Order implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Integer getOrderNo() {
+	public String getOrderNo() {
 		return this.orderNo;
 	}
 
-	public void setOrderNo(Integer orderNo) {
+	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
 	}
 
@@ -147,12 +147,12 @@ public class Order implements java.io.Serializable {
 		this.priority = priority;
 	}
 
-	public Integer getNumberid() {
-		return this.numberid;
+	public Integer getRouteid() {
+		return this.routeid;
 	}
 
-	public void setNumberid(Integer numberid) {
-		this.numberid = numberid;
+	public void setRouteid(Integer routeid) {
+		this.routeid = routeid;
 	}
 
 	public Integer getRecieveid() {

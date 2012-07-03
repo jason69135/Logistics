@@ -3,9 +3,12 @@ package dao.impl;
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import dao.SiteadminDAO;
+
 import beans.Siteadmin;
 
-public class SiteadminDAOImpl extends HibernateDaoSupport {
+public class SiteadminDAOImpl extends HibernateDaoSupport implements
+		SiteadminDAO {
 
 	public void save(Siteadmin transientInstance) {
 
@@ -17,12 +20,16 @@ public class SiteadminDAOImpl extends HibernateDaoSupport {
 		getHibernateTemplate().delete(persistentInstance);
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Siteadmin> findByname(String username){
+		String queryString = "from Siteadmin where username='"+username+"'";
+		return getHibernateTemplate().find(queryString);
+	}
 
 	@SuppressWarnings("unchecked")
-	public List<Siteadmin> findByProperty(String propertyName, Object value) {
-
-		String queryString = "from Siteadmin as model where model."
-				+ propertyName + "= ?";
-		return getHibernateTemplate().find(queryString, value);
+	public List<Siteadmin> findAll() {
+		String queryString = "from Siteadmin ";
+		return getHibernateTemplate().find(queryString);
 	}
 }

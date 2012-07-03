@@ -1,27 +1,25 @@
 package dao.impl;
-
-import java.util.List;
-
-import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import dao.ClaimsDAO;
 
 import beans.Claims;
 
-public class ClaimsDAOImpl extends HibernateDaoSupport implements dao.ClaimsDAO {
+public class ClaimsDAOImpl extends HibernateDaoSupport implements ClaimsDAO {
 
 	public void save(Claims transientInstance) {
-			getSession().save(transientInstance);
+		System.out.println("yangfan");
+		getHibernateTemplate().save(transientInstance);
 	}
 
-	public void delete(Claims persistentInstance) {		
-			getSession().delete(persistentInstance);
+	public void delete(Claims persistentInstance) {
+		getHibernateTemplate().save(persistentInstance);
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Claims> findAll() {
-			String queryString = "from Claims";
-			Query queryObject = getSession().createQuery(queryString);
-			return queryObject.list();
-	}
+	// @SuppressWarnings("unchecked")
+	// public List<Claims> findAll() {
+	// String queryString = "from Claims";
+	// return queryObject.list();
+	// }
 
 }

@@ -8,5 +8,5 @@ public interface SitetositeDAO{
 	public void save(Sitetosite transientInstance);
 	public void delete(Sitetosite persistentInstance);
 	
-	public List<Sitetosite> findAll();
+	public List<Sitetosite> findBysite(int sitea,int siteb);
 }

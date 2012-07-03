@@ -1,10 +1,14 @@
 package dao.impl;
 
+import java.util.List;
+
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import dao.NewsDAO;
 
 import beans.News;
 
-public class NewsDAOImpl extends HibernateDaoSupport {
+public class NewsDAOImpl extends HibernateDaoSupport implements NewsDAO{
 
 	public void save(News transientInstance) {
 			getHibernateTemplate().save(transientInstance);
@@ -14,9 +18,10 @@ public class NewsDAOImpl extends HibernateDaoSupport {
 			getHibernateTemplate().delete(persistentInstance);
 	}
 
-	public News findById(java.lang.Integer id) {
-			News instance = (News) getHibernateTemplate().get("haha.News", id);
-			return instance;
+	@SuppressWarnings("unchecked")
+	public List<News> findAll() {
+		String queryString = "from News";
+		return getHibernateTemplate().find(queryString);
 	}
 
 	

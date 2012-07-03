@@ -14,7 +14,7 @@ public class Receiver implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String username;
-	private String tel;
+	private Integer tel;
 	private Integer subsiteid;
 	private Integer cusid;
 
@@ -25,7 +25,7 @@ public class Receiver implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Receiver(Integer id, String username, String tel, Integer subsiteid,
+	public Receiver(Integer id, String username, Integer tel, Integer subsiteid,
 			Integer cusid) {
 		this.id = id;
 		this.username = username;
@@ -52,11 +52,11 @@ public class Receiver implements java.io.Serializable {
 		this.username = username;
 	}
 
-	public String getTel() {
+	public Integer getTel() {
 		return this.tel;
 	}
 
-	public void setTel(String tel) {
+	public void setTel(Integer tel) {
 		this.tel = tel;
 	}
 

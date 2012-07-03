@@ -1,12 +1,12 @@
 package dao.impl;
 
 import java.util.List;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import dao.OrderDAO;
 import beans.Order;
 
-
-public class OrderDAOImpl extends HibernateDaoSupport {
+public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
 
 	public void save(Order transientInstance) {
 		getHibernateTemplate().save(transientInstance);
@@ -18,19 +18,20 @@ public class OrderDAOImpl extends HibernateDaoSupport {
 
 	}
 
-	public Order findById(java.lang.Integer id) {
-
-		Order instance = (Order) getHibernateTemplate().get("haha.Order", id);
-		return instance;
-
-	}
-
 	@SuppressWarnings("unchecked")
-	public List<Order> findByProperty(String propertyName, Object value) {
+	public List<Order> findBycusid(int cusid) {
+		String queryString = "from Order where cusid = '" + cusid + "'";
+		return getHibernateTemplate().find(queryString);
 
-		String queryString = "from Order as model where model." + propertyName
-				+ "= ?";
-		return getHibernateTemplate().find(queryString, value);
 	}
 
+	public Order findByid(int id) {
+		String queryString = "from Order where id = '" + id + "'";
+		return (Order) getHibernateTemplate().find(queryString).get(0);
+	}
+
+	public Order findByorderno(String orderno) {
+		String queryString = "from Order where orderNo = '" + orderno + "'";
+		return (Order) getHibernateTemplate().find(queryString).get(0);
+	}
 }

@@ -10,6 +10,8 @@ public interface CustomerDAO {
 
 	public void delete(Customer persistentInstance);
 
-	public List<Customer> find(String username);
+	public List<Customer> findByName(String username);
+	
+	public void update(Customer persistentInstance);
 
 }

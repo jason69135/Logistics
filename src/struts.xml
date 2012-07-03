@@ -2,9 +2,89 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="ssh2" extends="struts-default">
-		<action name="LoginAction" class="springLoginAction">
-			<result name="success">index.jsp</result>
-			<result name="error">footer.jsp</result>
+		<action name="UserLoginAction" class="springUserLoginAction">
+			<result name="success">main.jsp</result>
+			<result name="error">error.jsp</result>
 		</action>
+		<action name="ShowMessageAction" class="springShowMessageAction">
+			<result name="success">showmessage.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="MakeOrderAction" class="springMakeOrderAction">
+			<result name="success">success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="CheckFeeAction" class="springCheckFeeAction">
+			<result name="success">checkfeeresult.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="AddComplainAction" class="springAddComplainAction">
+			<result name="success">success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="TrackOrderAction" class="springTrackOrderAction">
+			<result name="success">trackorder.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="CheckOrderAction" class="springCheckOrderAction">
+			<result name="success">checkorder.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ShowDetailOrderAction" class="springShowDetailOrderAction">
+			<result name="success">detailorder.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="CheckPersonsetAction" class="springCheckPersonsetAction">
+			<result name="success">checkpersonset.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ChangeEmailAction">
+			<result name="success">changeemail.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ChangePasswordAction">
+			<result name="success">changepassword.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="UpdatePasswordAction" class="springUpdatePasswordAction">
+			<result name="success">success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="UpdateEmailAction" class="springUpdateEmailAction">
+			<result name="success">success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="SearchOrderAction" class="springSearchOrderAction">
+			<result name="success">companyorderresult.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="SearchUserAction" class="springSearchUserAction">
+			<result name="success">companyuserresult.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="SearchAllNumberAction" class="springSearchAllNumberAction">
+			<result name="success">companynumber.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="SearchAllSubsiteAction" class="springSearchAllSubsiteAction">
+			<result name="success">companysubsite.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="SearchAllSiteAdminAction" class="springSearchAllSiteAdminAction">
+			<result name="success">companyadmin.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="SearchAllRouteAction" class="springSearchAllRouteAction">
+			<result name="success">companyroute.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="UserRegisterAction" class="springUserRegisterAction">
+			<result name="success">success.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="No1adminLoginAction" class="springNo1adminLoginAction">
+			<result name="success">No1adminmain.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>	
 	</package>
-</struts>    
+</struts>
