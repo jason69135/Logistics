@@ -1,0 +1,113 @@
+#pageslide {
+    /* These styles MUST be included. Do not change. */
+    display: none;
+    position: absolute;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    z-index: 999999;
+    /* Specify the width of your pageslide here */
+    width: 378px;
+    /* These styles are optional, and describe how the pageslide will look */
+    background: url(../images/leftarea-bg2.jpg);
+    color: #FFF;
+    -webkit-box-shadow: inset 0 0 5px 5px #222;
+    -moz-shadow: inset 0 0 5px 5px #222;
+    box-shadow: inset 0 0 5px 5px #222;
+}
+#modal { 
+	display: none; 
+}
+#modal a {
+	background: #CCC; color: #333; font-weight: bold; padding: 5px 10px; border: none; 
+}
+#modal a:hover { 
+	background: #aaa; 
+}
+#modal #test{
+	margin-left:70px;
+	margin-top:200px;
+}
+#modal #active-arrow {
+	background: url(../images/active-arrow2.png) no-repeat;
+	display: block;
+	width: 16px;
+	height: 24px;
+	position: absolute;
+	left: -10px;
+	top: 180px;
+	z-index: 7;
+}
+#modal #right-border {
+	min-height: 1024px;
+	background: url(../images/border-bg2.png) repeat-y;
+	width: 15px;
+	position: absolute;
+	left: -4px;
+	top: 0px;
+	right: 0px;
+}
+#modal2 { 
+	display: none; 
+}
+#modal2 a {
+	background: #CCC; color: #333; font-weight: bold; padding: 5px 10px; border: none; 
+}
+#modal2 a:hover { 
+	background: #aaa; 
+}
+#modal2 #test{
+	margin-left:70px;
+	margin-top:200px;
+}
+#modal2 #active-arrow {
+	background: url(../images/active-arrow2.png) no-repeat;
+	display: block;
+	width: 16px;
+	height: 24px;
+	position: absolute;
+	left: -10px;
+	top: 180px;
+	z-index: 7;
+}
+#modal2 #right-border {
+	min-height: 1024px;
+	background: url(../images/border-bg2.png) repeat-y;
+	width: 15px;
+	position: absolute;
+	left: -4px;
+	top: 0px;
+	right: 0px;
+}
+#modal3 { 
+	display: none; 
+}
+#modal3 a {
+	background: #CCC; color: #333; font-weight: bold; padding: 5px 10px; border: none; 
+}
+#modal3 a:hover { 
+	background: #aaa; 
+}
+#modal3 #test{
+	margin-left:70px;
+	margin-top:200px;
+}
+#modal3 #active-arrow {
+	background: url(../images/active-arrow2.png) no-repeat;
+	display: block;
+	width: 16px;
+	height: 24px;
+	position: absolute;
+	left: -10px;
+	top: 180px;
+	z-index: 7;
+}
+#modal3 #right-border {
+	min-height: 1024px;
+	background: url(../images/border-bg2.png) repeat-y;
+	width: 15px;
+	position: absolute;
+	left: -4px;
+	top: 0px;
+	right: 0px;
+}
