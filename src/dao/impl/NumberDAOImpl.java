@@ -31,4 +31,9 @@ public class NumberDAOImpl extends HibernateDaoSupport implements NumberDAO{
 		return getHibernateTemplate().find(queryString);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Number> findBy(int id) {//根据自己id查询
+		String queryString = "from Number where id = "+id+"";
+		return getHibernateTemplate().find(queryString);
+	}
 }

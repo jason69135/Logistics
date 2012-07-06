@@ -27,5 +27,12 @@ public class SubsiteDAOImpl extends HibernateDaoSupport implements SubsiteDAO{
 		String queryString = "from Subsite where sitename='" + subsitename + "'";
 		return getHibernateTemplate().find(queryString);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Subsite> findBysiteid(int siteid) {
+		System.out.println("siteid"+siteid);
+		String queryString = "from Subsite where siteid = " +siteid+"";
+		return getHibernateTemplate().find(queryString);
+	}
 
 }

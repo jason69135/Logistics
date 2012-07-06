@@ -10,6 +10,8 @@ public interface NumberDAO {
 	public void delete(Number persistentInstance);
 
 	public List<Number> findById(int routeid);
+	
+	public List<Number> findBy(int id);
 
 	public List<Number> findAll();
 }

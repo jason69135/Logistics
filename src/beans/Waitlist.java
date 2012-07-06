@@ -13,19 +13,28 @@ public class Waitlist implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private Integer orderid;
+	private String orderno;
 	private Integer numberid;
 	private Integer siteid;
+	private Integer priority;
 
 	// Constructors
+
+	public Integer getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
 
 	/** default constructor */
 	public Waitlist() {
 	}
 
 	/** full constructor */
-	public Waitlist(Integer orderid, Integer numberid, Integer siteid) {
-		this.orderid = orderid;
+	public Waitlist(String orderno, Integer numberid, Integer siteid) {
+		this.orderno = orderno;
 		this.numberid = numberid;
 		this.siteid = siteid;
 	}
@@ -40,12 +49,12 @@ public class Waitlist implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Integer getOrderid() {
-		return this.orderid;
+	public String getOrderno() {
+		return this.orderno;
 	}
 
-	public void setOrderid(Integer orderid) {
-		this.orderid = orderid;
+	public void setOrderno(String orderno) {
+		this.orderno = orderno;
 	}
 
 	public Integer getNumberid() {

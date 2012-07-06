@@ -2,7 +2,8 @@ package actions.subsiteaction;
 import java.util.List;
 
 import services.SiteService;
-import beans.Site;
+import beans.Siteadmin;
+import beans.Subsite;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,11 +23,9 @@ public class SearchAllSubsiteAction extends ActionSupport {
 	
 	@Override
 	public String execute() {
-		List<Site> list = this.siteservice.SearchAllSite();
-		if(list.size()!=0){
-			ActionContext.getContext().getSession().put("sitelist", list);
-			return SUCCESS;
-		}
+			Siteadmin siteadmin = (Siteadmin)ActionContext.getContext().getSession().get("siteadmin");
+			List<Subsite> subsitelist = this.siteservice.SearchSite(siteadmin.getSiteid());
+			ActionContext.getContext().getSession().put("subsitelist", subsitelist);
 		return SUCCESS;
 	}
 }

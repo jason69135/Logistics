@@ -2,10 +2,7 @@ package actions.orderaction;
 
 import java.util.List;
 
-import org.apache.struts2.ServletActionContext;
-
 import services.OrderService;
-import javax.servlet.http.HttpSession;
 import beans.Order;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -35,10 +32,14 @@ public class CheckOrderAction extends ActionSupport {
 
 	@Override
 	public String execute() {
-		HttpSession session = ServletActionContext.getRequest().getSession();
-		String username = (String)session.getAttribute("username");
-		List<Order> list = this.orderservice.CheckOrder(username);
-		ActionContext.getContext().getSession().put("orderlist", list);
-		return SUCCESS;
+		Order order = (Order)ActionContext.getContext().getSession().get("Needorder");
+		order.setCheckstate("已审核");
+		this.orderservice.UpdateOrder(order);
+		List<Order> list = this.orderservice.ShowAllOrder();
+		if (list.size() != 0) {
+			ActionContext.getContext().getSession().put("checkorder", list);
+			return SUCCESS;
+		}
+		return ERROR;
 	}
 }

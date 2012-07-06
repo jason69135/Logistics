@@ -9,7 +9,7 @@
 		</property>
 		<property name="url" value="jdbc:mysql://localhost:3306/logistics"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="262728"></property>
+		<property name="password" value="root"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -40,6 +40,7 @@
 				<value>beans/Claims.hbm.xml</value>
 				<value>beans/Siteadmin.hbm.xml</value>
 				<value>beans/Subsiteadmin.hbm.xml</value>
+				<value>beans/Waitlist.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -87,6 +88,9 @@
 	<bean id="ClaimsDao" class="dao.impl.ClaimsDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	<bean id="WaitlistDao" class="dao.impl.WaitlistDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	<bean id="UserService" class="services.impl.UserServiceImpl">
 		<property name="customerDao" ref="CustomerDao"></property>
 	</bean>
@@ -98,6 +102,10 @@
 	</bean>
 	<bean id="SiteService" class="services.impl.SiteServiceImpl">
 		<property name="siteDao" ref="SiteDao"></property>
+		<property name="subsiteDao" ref="SubsiteDao"></property>
+	</bean>
+	<bean id="SubsiteService" class="services.impl.SubsiteServiceImpl">
+		<property name="subsiteDao" ref="SubsiteDao"></property>
 	</bean>
 	<bean id="MessageService" class="services.impl.MessageServiceImpl">
 		<property name="customerDao" ref="CustomerDao"></property>
@@ -124,6 +132,9 @@
 		<property name="sitetositeDao" ref="SitetositeDao"></property>
 		<property name="subsiteDao" ref="SubsiteDao"></property>
 		<property name="routeDao" ref="RouteDao"></property>
+	</bean>
+		<bean id="WaitlistService" class="services.impl.WaitlistServiceImpl">
+		<property name="waitlistDao" ref="WaitlistDao"></property>
 	</bean>
 	<bean id="ComplainlistService" class="services.impl.ComplainlistServiceImpl">
 		<property name="claimsDao" ref="ClaimsDao"></property>
@@ -189,5 +200,44 @@
 	</bean>
 	<bean id="springUserRegisterAction" class="actions.useraction.RegisterAction">
 		<property name="userService" ref="UserService"></property>
+	</bean>
+		<bean id="springNo1adminLoginAction" class="actions.No1adminaction.LoginAction">
+		<property name="no1adminservice" ref="No1adminService"></property>
 	</bean>	
+	<bean id="springDeleteSubsiteAction" class="actions.subsiteaction.DeleteSubsiteAction">
+		<property name="subsiteService" ref="SubsiteService"></property>
+		<property name="siteService" ref="SiteService"></property>
+	</bean>	
+	<bean id="springShowWaitlistAction" class="actions.waitlistaction.ShowWaitlistAction">
+		<property name="waitlistService" ref="WaitlistService"></property>
+	</bean>	
+	<bean id="springAddWaitlistAction" class="actions.waitlistaction.AddWaitlistAction">
+		<property name="waitlistService" ref="WaitlistService"></property>
+		<property name="orderService" ref="OrderService"></property>
+		<property name="routeService" ref="RouteService"></property>
+	</bean>
+	<bean id="springShowOrderandNumberAction" class="actions.orderaction.ShowOrderandNumber">
+		<property name="numberService" ref="NumberService"></property>
+		<property name="orderService" ref="OrderService"></property>
+		<property name="siteService" ref="SiteService"></property>
+	</bean>	
+	<bean id="springConfirmSendOrderAction" class="actions.orderaction.ConfirmSendOrderAction">
+		<property name="numberService" ref="NumberService"></property>
+		<property name="orderService" ref="OrderService"></property>
+		<property name="siteService" ref="SiteService"></property>
+	</bean>	
+	<bean id="springConfirmRecieveOrderAction" class="actions.orderaction.ConfirmRecieveOrderAction">
+		<property name="numberService" ref="NumberService"></property>
+		<property name="orderService" ref="OrderService"></property>
+		<property name="siteService" ref="SiteService"></property>
+	</bean>	
+	<bean id="springShowAllOrderAction" class="actions.orderaction.ShowAllOrderAction">
+		<property name="orderService" ref="OrderService"></property>
+	</bean>	
+	<bean id="spring1ShowOrderAction" class="actions.orderaction.ShowOrder1Action">
+		<property name="orderService" ref="OrderService"></property>
+	</bean>	
+	<bean id="spring2ShowOrderAction" class="actions.orderaction.ShowOrder2Action">
+		<property name="orderService" ref="OrderService"></property>
+	</bean>				
 </beans>

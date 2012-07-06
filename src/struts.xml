@@ -27,7 +27,7 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="CheckOrderAction" class="springCheckOrderAction">
-			<result name="success">checkorder.jsp</result>
+			<result name="success">checkOrder.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="ShowDetailOrderAction" class="springShowDetailOrderAction">
@@ -67,7 +67,7 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="SearchAllSubsiteAction" class="springSearchAllSubsiteAction">
-			<result name="success">companysubsite.jsp</result>
+			<result name="success">checkS1.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="SearchAllSiteAdminAction" class="springSearchAllSiteAdminAction">
@@ -83,8 +83,44 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="No1adminLoginAction" class="springNo1adminLoginAction">
-			<result name="success">No1adminmain.jsp</result>
+			<result name="success">s1.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="DeleteSubsiteAction" class="springDeleteSubsiteAction">
+			<result name="success">checkS1.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ShowWaitlistAction" class="springShowWaitlistAction">
+			<result name="success">checkAwait.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="AddWaitlistAction" class="springAddWaitlistAction">
+			<result name="success">addAwait1.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ShowOrderandNumberAction" class="springShowOrderandNumberAction">
+			<result name="success">sendConfirm2.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ConfirmSendOrderAction" class="springConfirmSendOrderAction">
+			<result name="success">sendConfirm2.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ConfirmRecieveOrderAction" class="springConfirmRecieveOrderAction">
+			<result name="success">receiveConfirm2.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>	
+		<action name="ShowAllOrderAction" class="springShowAllOrderAction">
+			<result name="success">checkOrder.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="ShowOrder1Action" class="spring1ShowOrderAction">
+			<result name="success">sendConfirm2.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>	
+		<action name="ShowOrder2Action" class="spring2ShowOrderAction">
+			<result name="success">receiveConfirm2.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>					
 	</package>
 </struts>

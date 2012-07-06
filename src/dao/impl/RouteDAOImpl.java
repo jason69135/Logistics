@@ -26,6 +26,12 @@ public class RouteDAOImpl extends HibernateDaoSupport implements RouteDAO {
 	}
 
 	@SuppressWarnings("unchecked")
+	public List<Route> findByAll(int routeid) {
+		String queryString = "from Route where id = '"+routeid+"'";
+		return getHibernateTemplate().find(queryString);
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Route> findByAll() {
 		String queryString = "from Route";
 		return getHibernateTemplate().find(queryString);

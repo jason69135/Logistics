@@ -12,6 +12,9 @@ public interface RouteDAO {
 
 	public Route findBysiteid(int startsiteid, int finishsiteid);// 起始和结束站点,线路唯一
 
+	public List<Route> findByAll(int routeid);
+	
 	public List<Route> findByAll();
+
 
 }

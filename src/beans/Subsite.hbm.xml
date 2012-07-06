@@ -11,16 +11,16 @@
             <generator class="increment" />
         </id>
         <property name="sitename" type="java.lang.String">
-            <column name="sitename" length="20" not-null="true" />
+            <column name="sitename" length="20"/>
         </property>
         <property name="arrivetime" type="java.sql.Time">
-            <column name="arrivetime" length="8" not-null="true" />
+            <column name="arrivetime"/>
         </property>
         <property name="fee" type="java.lang.Float">
-            <column name="fee" precision="5" not-null="true" />
+            <column name="fee" precision="5"/>
         </property>
         <property name="siteid" type="java.lang.Integer">
-            <column name="siteid" not-null="true" />
+            <column name="siteid" length="11"/>
         </property>
     </class>
 </hibernate-mapping>

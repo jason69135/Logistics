@@ -10,4 +10,6 @@ public interface No1AdminService {
 	public boolean DeleteNo1admin(String username);
 
 	public List<Siteadmin> ShowNo1admin();
+	
+	public Siteadmin ShowNo1admininfo(String adminname);
 }

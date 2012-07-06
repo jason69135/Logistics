@@ -13,8 +13,16 @@ public interface OrderService {
 	public Order ShowDetailOrder(int orderid);
 
 	public List<Order> ShowOrder(String customername);
-	
+
 	public Order TrackOrder(String orderno);
+
 	public List<Order> CheckOrder(String username);
+
 	public Order SearchOrder(String orderno);
+
+	public List<Order> ShowAllOrder();
+
+	public List<Order> Findbyrouteid(int routeid);
+	
+	public boolean UpdateOrder(Order order);
 }

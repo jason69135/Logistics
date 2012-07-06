@@ -10,14 +10,17 @@
             <column name="Id" />
             <generator class="increment" />
         </id>
-        <property name="orderid" type="java.lang.Integer">
-            <column name="orderid" />
+        <property name="orderno" type="java.lang.String">
+            <column name="orderno" />
         </property>
         <property name="numberid" type="java.lang.Integer">
             <column name="numberid" />
         </property>
         <property name="siteid" type="java.lang.Integer">
             <column name="siteid" />
+        </property>
+         <property name="priority" type="java.lang.Integer">
+            <column name="priority" />
         </property>
     </class>
 </hibernate-mapping>

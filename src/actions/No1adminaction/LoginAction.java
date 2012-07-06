@@ -4,6 +4,7 @@ import services.No1AdminService;
 
 import beans.Siteadmin;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
@@ -31,7 +32,9 @@ public class LoginAction extends ActionSupport {
 	@Override
 	public String execute() {
 		//頁面
-		if(this.no1adminservice.No1adminLogin(siteadmin.getUsername(), siteadmin.getPassword())){
+		if(this.no1adminservice.No1adminLogin(this.siteadmin.getUsername(), this.siteadmin.getPassword())){
+			Siteadmin admin = this.no1adminservice.ShowNo1admininfo(this.siteadmin.getUsername());
+			ActionContext.getContext().getSession().put("siteadmin", admin);
 			return SUCCESS;
 		}
 		return ERROR;

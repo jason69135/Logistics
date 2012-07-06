@@ -14,5 +14,9 @@ public interface NumberService {
 
 	public List<Number> ShowNumber(String startsite, String finishsite);
 	
+	public List<Number> SearchRouteid(int numberid);
+	
+	public List<Number> findByrouteid(int routeid);
+	
 	public List<Number> ShowAllNumber();
 }
